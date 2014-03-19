@@ -21,8 +21,8 @@ GameManager.prototype.restart = function () {
 
 // Keep playing after winning
 GameManager.prototype.keepPlaying = function () {
-  this.keepPlaying = true;
-  this.actuator.continue();
+  //this.keepPlaying = true;
+  //this.actuator.continue();
 };
 
 GameManager.prototype.isGameTerminated = function () {
