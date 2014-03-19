@@ -7,12 +7,10 @@ function loadImage(url, callback) {
     img.src = url;   
 }
 
-window.onload = function() {
-	loadImage('img/RMB1.jpg');
-	loadImage('img/RMB2.jpg');
-	loadImage('img/RMB5.jpg');
-	loadImage('img/RMB10.jpg');
-	loadImage('img/RMB20.jpg');
-	loadImage('img/RMB50.jpg');
-	loadImage('img/RMB100.jpg');
-} 
+window.onload = loadImage('img/RMB1.jpg');
+window.onload = loadImage('img/RMB2.jpg');
+window.onload = loadImage('img/RMB5.jpg');
+window.onload = loadImage('img/RMB10.jpg');
+window.onload = loadImage('img/RMB20.jpg');
+window.onload = loadImage('img/RMB50.jpg');
+window.onload = loadImage('img/RMB100.jpg');
