@@ -291,10 +291,12 @@ GameManager.prototype.tileMatchesAvailable = function () {
         for (var direction = 0; direction < 4; direction++) {
           var vector = self.getVector(direction);
           var cell   = { x: x + vector.x, y: y + vector.y };
+          var cell2  = { x: x + vector.x * 2, y: y + vector.y * 2};
 
           var other  = self.grid.cellContent(cell);
+          var other2 = self.grid.cellContent(cell2);
 
-          if (other && other.value === tile.value) {
+          if ((other && other.value === tile.value && self.is2to1(other.value + tile.value)) || (other && other2 && self.is3to1(other.value + other2.value + tile.value))) {
             return true; // These two tiles can be merged
           }
         }
