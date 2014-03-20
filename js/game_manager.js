@@ -124,9 +124,10 @@ GameManager.prototype.move = function (direction) {
       if (tile) {
         var positions = self.findFarthestPosition(cell, vector);
         var next      = self.grid.cellContent(positions.next);
+        var next2     = self.grid.cellContent(positions.next2);
 
         // Only one merger per row traversal?
-        if (next && next.value === tile.value && !next.mergedFrom) {
+        if (next && next.value === tile.value && !next.mergedFrom && self.is2to1(tile.value + next.value)) {
           var merged = new Tile(positions.next, self.toFaceValue(tile.value * 2));
           merged.mergedFrom = [tile, next];
 
@@ -141,10 +142,22 @@ GameManager.prototype.move = function (direction) {
 
           // The mighty 2048 tile
           if (merged.value === 100) self.won = true;
+        } else if (next2 && next && self.is3to1(next.value + next2.value + tile.value) && !next2.mergedFrom) {
+          var merged = new Tile(positions.next2, next.value + next2.value + tile.value);
+          merged.mergedFrom =  [tile, next2];
+
+          self.grid.insertTile(merged);
+          self.grid.removeTile(tile);
+          self.grid.removeTile(next);
+
+          tile.updatePosition(positions.next2);
+
+          self.score += merged.value;
+          if (merged.value === 100) self.won = true;
         } else {
           self.moveTile(tile, positions.farthest);
         }
-
+        
         if (!self.positionsEqual(cell, tile)) {
           moved = true; // The tile moved from its original cell!
         }
@@ -163,7 +176,7 @@ GameManager.prototype.move = function (direction) {
   }
 };
 
-//
+// Transfer the value to face value
 GameManager.prototype.toFaceValue = function (value) {
   var map = {
     1: 1,
@@ -177,6 +190,34 @@ GameManager.prototype.toFaceValue = function (value) {
     100: 100
   }
 
+  return map[value];
+}
+
+// Tell if the value need 2 tiles to merge
+GameManager.prototype.is2to1 = function (value) {
+  var map = {
+    1: true,
+    2: true,
+    5: false,
+    10: true,
+    20: true,
+    50: false,
+    100: true
+  }
+  return map[value];
+}
+
+// Tell if the value need 3 tiles to merge
+GameManager.prototype.is3to1 = function (value) {
+  var map = {
+    1: false,
+    2: false,
+    5: true,
+    10: false,
+    20: false,
+    50: true,
+    100: false
+  }
   return map[value];
 }
 
@@ -210,7 +251,7 @@ GameManager.prototype.buildTraversals = function (vector) {
 };
 
 GameManager.prototype.findFarthestPosition = function (cell, vector) {
-  var previous;
+  var previous,previous2;
 
   // Progress towards the vector direction until an obstacle is found
   do {
@@ -218,10 +259,17 @@ GameManager.prototype.findFarthestPosition = function (cell, vector) {
     cell     = { x: previous.x + vector.x, y: previous.y + vector.y };
   } while (this.grid.withinBounds(cell) &&
            this.grid.cellAvailable(cell));
+  var cell2 = cell;
+  do {
+    previous2 = cell2;
+    cell2     = { x:previous2.x + vector.x, y: previous2.y + vector.y };
+  } while (this.grid.withinBounds(cell2) &&
+           this.grid.cellAvailable(cell2));
 
   return {
     farthest: previous,
-    next: cell // Used to check if a merge is required
+    next: cell, // Used to check if a merge is required
+    next2: cell2
   };
 };
 
