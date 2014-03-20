@@ -59,7 +59,7 @@ GameManager.prototype.addStartTiles = function () {
 // Adds a tile in a random position
 GameManager.prototype.addRandomTile = function () {
   if (this.grid.cellsAvailable()) {
-    var value = Math.random() < 0.9 ? 1 : 2;
+    var value = Math.random() < 0.9 ? 0.1 : 0.2;
     var tile = new Tile(this.grid.randomAvailableCell(), value);
 
     this.grid.insertTile(tile);
@@ -139,6 +139,7 @@ GameManager.prototype.move = function (direction) {
 
           // Update the score
           self.score += merged.value;
+          self.score = Math.round(self.score * 100) / 100;
 
           // The mighty 2048 tile
           if (merged.value === 100) self.won = true;
@@ -153,6 +154,7 @@ GameManager.prototype.move = function (direction) {
           tile.updatePosition(positions.next2);
 
           self.score += merged.value;
+          self.score = Math.round(self.score * 100) / 100;
           if (merged.value === 100) self.won = true;
         } else {
           self.moveTile(tile, positions.farthest);
@@ -179,6 +181,9 @@ GameManager.prototype.move = function (direction) {
 // Transfer the value to face value
 GameManager.prototype.toFaceValue = function (value) {
   var map = {
+    0.1: 0.1,
+    0.2: 0.2,
+    0.5: 0.5,
     1: 1,
     2: 2,
     4: 5,
@@ -196,6 +201,9 @@ GameManager.prototype.toFaceValue = function (value) {
 // Tell if the value need 2 tiles to merge
 GameManager.prototype.is2to1 = function (value) {
   var map = {
+    0.1: true,
+    0.2: true,
+    0.5: false,
     1: true,
     2: true,
     5: false,
@@ -210,6 +218,9 @@ GameManager.prototype.is2to1 = function (value) {
 // Tell if the value need 3 tiles to merge
 GameManager.prototype.is3to1 = function (value) {
   var map = {
+    0.1: false,
+    0.2: false,
+    0.5: true,
     1: false,
     2: false,
     5: true,

@@ -14,3 +14,6 @@ window.onload = loadImage('img/RMB10.jpg');
 window.onload = loadImage('img/RMB20.jpg');
 window.onload = loadImage('img/RMB50.jpg');
 window.onload = loadImage('img/RMB100.jpg');
+window.onload = loadImage('img/RMB0.5.jpg');
+window.onload = loadImage('img/RMB0.2.jpg');
+window.onload = loadImage('img/RMB0.1.jpg');
