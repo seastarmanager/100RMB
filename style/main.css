@@ -592,7 +592,7 @@ hr {
       clear: both; }
 
   .grid-cell {
-    width: 66.5px;
+    width: 70.5px;
     height: 57.5px;
     margin-right: 10px;
     float: left;
@@ -606,11 +606,11 @@ hr {
     z-index: 2; }
 
   .tile.tile-img img{
-    max-width:66px;
+    max-width:70px;
     }
 
   .tile, .tile .tile-inner {
-    width: 67px;
+    width: 71px;
     height: 58px;
     line-height: 67.5px; }
   .tile.tile-position-1-1 {
@@ -630,53 +630,53 @@ hr {
     -moz-transform: translate(0px, 202px);
     transform: translate(0px, 202px); }
   .tile.tile-position-2-1 {
-    -webkit-transform: translate(76px, 0px);
-    -moz-transform: translate(76px, 0px);
-    transform: translate(76px, 0px); }
+    -webkit-transform: translate(80px, 0px);
+    -moz-transform: translate(80px, 0px);
+    transform: translate(80px, 0px); }
   .tile.tile-position-2-2 {
-    -webkit-transform: translate(76px, 67px);
-    -moz-transform: translate(76px, 67px);
-    transform: translate(76px, 67px); }
+    -webkit-transform: translate(80px, 67px);
+    -moz-transform: translate(80px, 67px);
+    transform: translate(80px, 67px); }
   .tile.tile-position-2-3 {
-    -webkit-transform: translate(76px, 135px);
-    -moz-transform: translate(76px, 135px);
-    transform: translate(76px, 135px); }
+    -webkit-transform: translate(80px, 135px);
+    -moz-transform: translate(80px, 135px);
+    transform: translate(80px, 135px); }
   .tile.tile-position-2-4 {
-    -webkit-transform: translate(76px, 202px);
-    -moz-transform: translate(76px, 202px);
-    transform: translate(76px, 202px); }
+    -webkit-transform: translate(80px, 202px);
+    -moz-transform: translate(80px, 202px);
+    transform: translate(80px, 202px); }
   .tile.tile-position-3-1 {
-    -webkit-transform: translate(152px, 0px);
-    -moz-transform: translate(152px, 0px);
-    transform: translate(152px, 0px); }
+    -webkit-transform: translate(160px, 0px);
+    -moz-transform: translate(160px, 0px);
+    transform: translate(160px, 0px); }
   .tile.tile-position-3-2 {
-    -webkit-transform: translate(152px, 67px);
-    -moz-transform: translate(152px, 67px);
-    transform: translate(152px, 67px); }
+    -webkit-transform: translate(160px, 67px);
+    -moz-transform: translate(160px, 67px);
+    transform: translate(160px, 67px); }
   .tile.tile-position-3-3 {
-    -webkit-transform: translate(152px, 135px);
-    -moz-transform: translate(152px, 135px);
-    transform: translate(152px, 135px); }
+    -webkit-transform: translate(160px, 135px);
+    -moz-transform: translate(160px, 135px);
+    transform: translate(160px, 135px); }
   .tile.tile-position-3-4 {
-    -webkit-transform: translate(152px, 202px);
-    -moz-transform: translate(152px, 202px);
-    transform: translate(152px, 202px); }
+    -webkit-transform: translate(160px, 202px);
+    -moz-transform: translate(160px, 202px);
+    transform: translate(160px, 202px); }
   .tile.tile-position-4-1 {
-    -webkit-transform: translate(228px, 0px);
-    -moz-transform: translate(228px, 0px);
-    transform: translate(228px, 0px); }
+    -webkit-transform: translate(240px, 0px);
+    -moz-transform: translate(240px, 0px);
+    transform: translate(240px, 0px); }
   .tile.tile-position-4-2 {
-    -webkit-transform: translate(228px, 67px);
-    -moz-transform: translate(228px, 67px);
-    transform: translate(228px, 67px); }
+    -webkit-transform: translate(240px, 67px);
+    -moz-transform: translate(240px, 67px);
+    transform: translate(240px, 67px); }
   .tile.tile-position-4-3 {
-    -webkit-transform: translate(228px, 135px);
-    -moz-transform: translate(228px, 135px);
-    transform: translate(228px, 135px); }
+    -webkit-transform: translate(240px, 135px);
+    -moz-transform: translate(240px, 135px);
+    transform: translate(240px, 135px); }
   .tile.tile-position-4-4 {
-    -webkit-transform: translate(228px, 202px);
-    -moz-transform: translate(228px, 202px);
-    transform: translate(228px, 202px); }
+    -webkit-transform: translate(240px, 202px);
+    -moz-transform: translate(240px, 202px);
+    transform: translate(240px, 202px); }
 
   .game-container {
     margin-top: 20px; }
