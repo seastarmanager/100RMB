@@ -143,19 +143,34 @@ GameManager.prototype.move = function (direction) {
 
           // The mighty 2048 tile
           if (merged.value === 100) self.won = true;
-        } else if (next2 && next && self.is3to1(next.value + next2.value + tile.value) && !next2.mergedFrom) {
+        } else if (next2 && next && self.is3to1(next.value + next2.value + tile.value) && !next2.mergedFrom && !next.mergedFrom) {
           var merged = new Tile(positions.next2, next.value + next2.value + tile.value);
           merged.mergedFrom =  [tile, next2];
 
-          self.grid.insertTile(merged);
           self.grid.removeTile(tile);
           self.grid.removeTile(next);
+          self.grid.insertTile(merged);
 
           tile.updatePosition(positions.next2);
 
           self.score += merged.value;
           self.score = Math.round(self.score * 100) / 100;
           if (merged.value === 100) self.won = true;
+        } else if (next2 && next && tile.value==0.2 && next.value==0.2 && next2.value==0.2 && !next2.mergedFrom && !next.mergedFrom) {//2+2+2=5+1
+          var merged = new Tile(positions.next2, 0.5);
+          var rest = new Tile(positions.next, 0.1);
+          merged.mergedFrom = [tile, next2];
+          rest.mergedFrom = [next];
+          self.grid.removeTile(tile);
+          //self.grid.removeTile(next);
+          self.grid.insertTile(merged);
+          self.grid.insertTile(rest);
+
+          tile.updatePosition(positions.next2);
+          //rest.updatePosition(positions.next);
+
+          self.score += merged.value;
+          self.score = Math.round(self.score * 100) / 100;
         } else {
           self.moveTile(tile, positions.farthest);
         }
@@ -307,8 +322,10 @@ GameManager.prototype.tileMatchesAvailable = function () {
           var other  = self.grid.cellContent(cell);
           var other2 = self.grid.cellContent(cell2);
 
-          if ((other && other.value === tile.value && self.is2to1(other.value + tile.value)) || (other && other2 && self.is3to1(other.value + other2.value + tile.value))) {
-            return true; // These two tiles can be merged
+          if ((other && other.value === tile.value && self.is2to1(other.value + tile.value)) 
+            || (other && other2 && self.is3to1(other.value + other2.value + tile.value))
+            || (other && other2 && other.value==0.2 && other2.value==0.2 && tile.value==0.2)) {
+            return true; // These tiles can be merged
           }
         }
       }
